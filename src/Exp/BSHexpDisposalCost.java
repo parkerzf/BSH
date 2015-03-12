@@ -15,7 +15,7 @@ import utils.Monitor;
 import BSH.BSHTask;
 
 /*
- * read 100 disposal cost from file commodity price and save maxval, finalUseDC, finalUseRC
+ * read 100 disposal cost from file commodity price and save maxval, maxvar, finalUseDC, finalUseRC
  */
 public class BSHexpDisposalCost {
 	public static void main(String args[]){
