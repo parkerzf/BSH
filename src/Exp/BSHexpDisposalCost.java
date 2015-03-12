@@ -103,9 +103,9 @@ public class BSHexpDisposalCost {
 
 				Environment.disposalCost = priceList.get(i);
 				BSHTask task = new BSHTask(M,N,Nprim,
-						Environment.minMarkets[i],Environment.medianMarkets[i],Environment.maxMarkets[i],
-						Environment.minReturns[i],Environment.medianReturns[i],Environment.maxReturns[i],
-						Environment.minRates[i],Environment.medianRates[i],Environment.maxRates[i],
+						Environment.minMarkets[0],Environment.medianMarkets[0],Environment.maxMarkets[0],
+						Environment.minReturns[0],Environment.medianReturns[0],Environment.maxReturns[0],
+						Environment.minRates[0],Environment.medianRates[0],Environment.maxRates[0],
 						out);  
 				task.run();
 
