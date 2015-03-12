@@ -64,12 +64,7 @@ public class BSHTask {
 
 	public void run() throws IloException{
 		stepOne();
-		if(Nprim!=0)
-			stepTwo();
-
-		if(out!=null){
-			out.close();
-		}
+		if(Nprim!=0) stepTwo();
 	}
 
 
@@ -85,10 +80,9 @@ public class BSHTask {
 		//				medianMarket*Environment.PPDensitySum,minReturn*Environment.PPDensitySum,
 		//				maxReturn*Environment.PPDensitySum,medianReturn*Environment.PPDensitySum,
 		//				minRate, maxRate, medianRate,M,N);
-				SAA saa = new SAA(2383906.5*Environment.PPDensitySum,2648785*Environment.PPDensitySum,
-						2913663.5*Environment.PPDensitySum,215325*Environment.PPDensitySum,
-						861300*Environment.PPDensitySum,1507275*Environment.PPDensitySum,0.525,0.7,0.875,M,N);
-		fvals = new ArrayList<Double>();
+		SAA saa = new SAA(2383906*Environment.PPDensitySum,2648785*Environment.PPDensitySum,
+				2913663*Environment.PPDensitySum,28710*Environment.PPDensitySum,
+				114840*Environment.PPDensitySum,200970*Environment.PPDensitySum,0.525,0.7,0.875,M,N);		fvals = new ArrayList<Double>();
 		long start = 0, end = 0;
 		for(int i = 0; i<M; i++){
 			System.out.println("start the sample set " + i);
@@ -105,31 +99,6 @@ public class BSHTask {
 				PrimalSolution s = model.solve();
 				end = System.currentTimeMillis();
 				model.clear();
-
-				//flowCost_plant_DC*(plant_DC_0+plant_DC_1)
-//				int sum = 0;
-//				for(int j=0; j<Environment.flowCost_plant_DC.length;j++){
-//					sum += Environment.flowCost_plant_DC[j]*(s.plant_DC[0][j] + s.plant_DC[1][j]);
-//				}
-//
-//				//flowCost_DC_customers*(DC_customers_0+DC_customers_1
-//				for(int j=0; j<Environment.flowCost_DC_customers.length;j++){
-//					for(int k=0; k<Environment.flowCost_DC_customers[0].length;k++){
-//						sum += Environment.flowCost_DC_customers[j][k]*(s.DC_customers[0][j][k] + s.DC_customers[1][j][k]);
-//					}
-//				}
-//				//flowCost_customers_RC*customers_RC
-//				for(int j=0; j<Environment.flowCost_customers_RC.length;j++){
-//					for(int k=0; k<Environment.flowCost_customers_RC[0].length;k++){
-//						sum += Environment.flowCost_customers_RC[i][k]*s.customers_RC[i][k];
-//					}
-//				}
-//
-//				//flowCost_RC_plant*RC_plant
-//				for(int j=0; j<Environment.flowCost_RC_plant.length;j++){
-//					sum += Environment.flowCost_RC_plant[j]*s.RC_plant[j];
-//				}
-//				System.out.println("round "+i+" sum: " + sum);
 
 				solutions.add(s);
 				solutionList.add(s);
@@ -150,7 +119,7 @@ public class BSHTask {
 		fval_var = MatrixHelper.getVariance(fvals);
 		System.out.println("fval_mean: " + fval_mean);
 		System.out.println("fval_var: " + fval_var);
-		outputStepOne();
+		//outputStepOne();
 	}
 
 	private void stepTwo() throws IloException {
@@ -161,7 +130,6 @@ public class BSHTask {
 		double[] finalUseRC = null;
 
 		System.out.println("start step two");
-		out.println("start step two");
 		for(PrimalSolution s: solutions){
 //			saa = new SAA(1589271*Environment.PPDensitySum,3708299*Environment.PPDensitySum,
 //					2648785*Environment.PPDensitySum,28710*Environment.PPDensitySum,
@@ -170,10 +138,9 @@ public class BSHTask {
 			//		medianMarket*Environment.PPDensitySum,minReturn*Environment.PPDensitySum,
 			//		maxReturn*Environment.PPDensitySum,medianReturn*Environment.PPDensitySum,
 			//		minRate, maxRate, medianRate,1,Nprim);
-			saa = new SAA(2383906.5*Environment.PPDensitySum,2648785*Environment.PPDensitySum,
-					2913663.5*Environment.PPDensitySum,215325*Environment.PPDensitySum,
-					861300*Environment.PPDensitySum,1507275*Environment.PPDensitySum,0.525,0.7,0.875,1,Nprim);
-			
+			saa = new SAA(2383906*Environment.PPDensitySum,2648785*Environment.PPDensitySum,
+					2913663*Environment.PPDensitySum,28710*Environment.PPDensitySum,
+					114840*Environment.PPDensitySum,200970*Environment.PPDensitySum,0.525,0.7,0.875,1,Nprim);			
 			double[] meanAndVar = LargeSampleComputation(s.udc,s.urc, saa);
 
 			if (meanAndVar[0] > maxfval){
@@ -185,36 +152,37 @@ public class BSHTask {
 			Monitor.runGC();
 		}
 		System.out.println("end step two");
-		out.println("end step two");
 		System.out.println("maxfval: "+maxfval);
-		out.println("maxfval: "+maxfval);
 		System.out.println("maxVar: "+maxVar);
-		out.println("maxVar: "+maxVar);
 
 		System.out.println("finalVar: "+ (fval_var + maxVar));
-		out.println("finalVar: "+ (fval_var + maxVar));
 
 		System.out.println("finalUseDC: ");
-		out.println("finalUseDC: ");
+		StringBuilder finalUseDCSb = new StringBuilder();
 		for (int i = 0; i < finalUseDC.length; i++) {
 			if(finalUseDC[i] > 0.5){
 				System.out.print("\t" + String.format("DC[%d] = %3.1f", i, finalUseDC[i]));
-				out.print("\t" + String.format("DC[%d] = %3.1f", i, finalUseDC[i]));
 			}
+			finalUseDCSb.append((int)finalUseDC[i]);
+			finalUseDCSb.append(" ");
 		}
 		System.out.println();
-		out.println();
 
 		System.out.println("finalUseRC:");
-		out.println("finalUseRC:");
+		StringBuilder finalUseRCSb = new StringBuilder();
 		for (int i = 0; i < finalUseRC.length; i++) {
 			if(finalUseRC[i] > 0.5){
 				System.out.print("\t" + String.format("RC[%d] = %3.1f", i, finalUseRC[i]));
-				out.print("\t" + String.format("RC[%d] = %3.1f", i, finalUseRC[i]));
 			}
+			finalUseRCSb.append((int)finalUseRC[i]);
+			finalUseRCSb.append(" ");
 		}
 		System.out.println();
-		out.println();
+		out.println(Environment.disposalCost + 
+				"," + maxfval + 
+				"," + maxVar + 
+				"," + finalUseDCSb +
+				"," + finalUseRCSb);
 	}
 
 	private double[] LargeSampleComputation(double[] udc,

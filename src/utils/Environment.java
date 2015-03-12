@@ -10,7 +10,7 @@ public class Environment {
 	public final static double manCost = 370;
 	public final static double remanCost = 225; 
 	public final static double holdingCost = 10;
-	public final static double disposalCost = 50;
+	public static double disposalCost = 50;
 	public final static double FUZZ = 1.0e3;
 	public final static  int POOLSIZE = 40;
 

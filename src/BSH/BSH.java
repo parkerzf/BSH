@@ -418,29 +418,29 @@ public class BSH {
 		master.addGe(objExprMaster, 1, "c_nRC");
 		
 		//Fixed forward supply chain to the sequential forward optimal
-		objExprMaster.clear();
-		objExprMaster.addTerm(1, use_DC[0]);
-	    master.addGe(objExprMaster, 1, "fixed_DC0");
-	    
-		objExprMaster.clear();
-		objExprMaster.addTerm(1, use_DC[1]);
-	    master.addGe(objExprMaster, 1, "fixed_DC1");
-	    
-		objExprMaster.clear();
-		objExprMaster.addTerm(1, use_DC[2]);
-	    master.addLe(objExprMaster, 0, "fixed_DC2");
-	    
-		objExprMaster.clear();
-		objExprMaster.addTerm(1, use_DC[3]);
-	    master.addGe(objExprMaster, 1, "fixed_DC3");
-	    
-		objExprMaster.clear();
-		objExprMaster.addTerm(1, use_DC[4]);
-	    master.addLe(objExprMaster, 0, "fixed_DC4");
-	    
-	    objExprMaster.clear();
-		objExprMaster.addTerm(1, use_DC[5]);
-	    master.addLe(objExprMaster, 0, "fixed_DC5");
+//		objExprMaster.clear();
+//		objExprMaster.addTerm(1, use_DC[0]);
+//	    master.addGe(objExprMaster, 1, "fixed_DC0");
+//	    
+//		objExprMaster.clear();
+//		objExprMaster.addTerm(1, use_DC[1]);
+//	    master.addGe(objExprMaster, 1, "fixed_DC1");
+//	    
+//		objExprMaster.clear();
+//		objExprMaster.addTerm(1, use_DC[2]);
+//	    master.addLe(objExprMaster, 0, "fixed_DC2");
+//	    
+//		objExprMaster.clear();
+//		objExprMaster.addTerm(1, use_DC[3]);
+//	    master.addGe(objExprMaster, 1, "fixed_DC3");
+//	    
+//		objExprMaster.clear();
+//		objExprMaster.addTerm(1, use_DC[4]);
+//	    master.addLe(objExprMaster, 0, "fixed_DC4");
+//	    
+//	    objExprMaster.clear();
+//		objExprMaster.addTerm(1, use_DC[5]);
+//	    master.addLe(objExprMaster, 0, "fixed_DC5");
 	    
 	  //Fixed reverse supply chain to the sequential forward optimal
 //	  		objExprMaster.clear();
