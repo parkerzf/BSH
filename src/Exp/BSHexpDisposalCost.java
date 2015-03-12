@@ -97,7 +97,7 @@ public class BSHexpDisposalCost {
 		try {
 			PrintStream out = new PrintStream(new FileOutputStream(outFileName));
 //			for(int i = 0 ; i < 2; i++){
-			for(int i = 0 ; i < priceList.size(); i++){
+			for(int i = 16 ; i < priceList.size(); i++){
 				//		for(int i = 0 ; i < 1; i++){
 				start = System.currentTimeMillis();
 
