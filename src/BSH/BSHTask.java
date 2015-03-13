@@ -141,7 +141,17 @@ public class BSHTask {
 			saa = new SAA(2383906*Environment.PPDensitySum,2648785*Environment.PPDensitySum,
 					2913663*Environment.PPDensitySum,28710*Environment.PPDensitySum,
 					114840*Environment.PPDensitySum,200970*Environment.PPDensitySum,0.525,0.7,0.875,1,Nprim);			
+			
 			double[] meanAndVar = LargeSampleComputation(s.udc,s.urc, saa);
+			
+			//taking a constant value into fval
+			double meanRet = 0;
+			for(Triple triple: saa.getSamples(0)){
+				meanRet += triple.ret;
+			}
+			
+			meanRet /= Nprim;
+			meanAndVar[0] -= (Environment.holdingCost + Environment.disposalCost)*meanRet;
 
 			if (meanAndVar[0] > maxfval){
 				maxfval = meanAndVar[0];
