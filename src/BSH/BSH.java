@@ -221,7 +221,8 @@ public class BSH {
 				//if one sub problem is not optimal, we break out from the loop 
 				if(status != IloCplex.Status.Optimal) break;
 
-				currentSubObjValue = currentSub.sub.getObjValue();
+//				currentSubObjValue = currentSub.sub.getObjValue();
+				currentSubObjValue = currentSub.sub.getObjValue() - (Environment.holdingCost + Environment.disposalCost)*samples[index].ret;
 				//				System.out.println("sub problem obj value: " + currentSubObjValue);
 				expectSubObjValue += currentSubObjValue;
 				//get the dual solution
