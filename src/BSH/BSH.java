@@ -287,8 +287,10 @@ public class BSH {
 							expr = master.sum(expr, currentDualSolution.chi[j]*currentSub.cFlowBalance_return[j].getUB());//master.prod(chi[j], rhs.get(cFlowBalance_return[j])));
 						}
 						double I = (Environment.reservationPriceUB - Environment.reservationPriceLB)/samples[index].marketSize; 
-						expr = master.sum(expr, I * currentDualSolution.q_new * currentDualSolution.q_new);
-						expr = master.sum(expr, 2 * Environment.remanDepreciation * I * currentDualSolution.q_new 
+//						expr = master.sum(expr, I * currentDualSolution.q_new * currentDualSolution.q_new);    //original
+//						expr = master.sum(expr, 2 * Environment.remanDepreciation * I * currentDualSolution.q_new    //original
+//								* currentDualSolution.q_reman);                                                       //original
+						expr = master.sum(expr, 1 * Environment.remanDepreciation * I * currentDualSolution.q_new 
 								* currentDualSolution.q_reman);
 						expr = master.sum(expr, Environment.remanDepreciation * I * currentDualSolution.q_reman 
 								* currentDualSolution.q_reman);
@@ -437,7 +439,7 @@ public class BSH {
 //	    
 //		objExprMaster.clear();
 //		objExprMaster.addTerm(1, use_DC[4]);
-//	    master.addLe(objExprMaster, 0, "fixed_DC4");
+//	    master.addGe(objExprMaster, 1, "fixed_DC4");
 //	    
 //	    objExprMaster.clear();
 //		objExprMaster.addTerm(1, use_DC[5]);
@@ -447,10 +449,10 @@ public class BSH {
 //	  		objExprMaster.clear();
 //	  		objExprMaster.addTerm(1, use_RC[0]);
 //	  	    master.addGe(objExprMaster, 1, "fixed_RC0");
-	  	    
+//	  	    
 //	  		objExprMaster.clear();
 //	  		objExprMaster.addTerm(1, use_RC[1]);
-//	  	    master.addLe(objExprMaster, 0, "fixed_RC1");
+//	  	    master.addGe(objExprMaster, 1, "fixed_RC1");
 //	  	    
 //	  		objExprMaster.clear();
 //	  		objExprMaster.addTerm(1, use_RC[2]);
@@ -458,12 +460,12 @@ public class BSH {
 //	  	    
 //	  		objExprMaster.clear();
 //	  		objExprMaster.addTerm(1, use_RC[3]);
-//	  	    master.addLe(objExprMaster, 0, "fixed_RC3");
+//	  	    master.addGe(objExprMaster, 1, "fixed_RC3");
 //	  	    
 //	  		objExprMaster.clear();
 //	  		objExprMaster.addTerm(1, use_RC[4]);
 //	  	    master.addLe(objExprMaster, 0, "fixed_RC4");
-	  	    
+//	  	    
 //	  	    objExprMaster.clear();
 //	  		objExprMaster.addTerm(1, use_RC[5]);
 //	  	    master.addGe(objExprMaster, 1, "fixed_RC5");
