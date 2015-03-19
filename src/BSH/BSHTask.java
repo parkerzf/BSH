@@ -128,6 +128,7 @@ public class BSHTask {
 		double maxVar = Double.NEGATIVE_INFINITY;
 		double[] finalUseDC = null;
 		double[] finalUseRC = null;
+		double finalManPrice = 0;
 
 		System.out.println("start step two");
 		for(PrimalSolution s: solutions){
@@ -146,18 +147,26 @@ public class BSHTask {
 			
 			//taking a constant value into fval
 			double meanRet = 0;
+			double meanManPrice = 0;
 			for(Triple triple: saa.getSamples(0)){
 				meanRet += triple.ret;
+				
+				double I = (Environment.reservationPriceUB - Environment.reservationPriceLB)/triple.marketSize;   //I=(resPriceUB - resPriceLB) / marketSize;
+				meanManPrice +=  Environment.reservationPriceUB - I * s.manQuantity 
+						- Environment.remanDepreciation * I * s.remanQuantity;
 			}
 			
-			meanRet /= Nprim;
+			
 			meanAndVar[0] -= (Environment.holdingCost + Environment.disposalCost)*meanRet;
-
+			meanRet /= Nprim;
+			meanManPrice /= Nprim;
+			
 			if (meanAndVar[0] > maxfval){
 				maxfval = meanAndVar[0];
 				maxVar = meanAndVar[1];
 				finalUseDC = s.udc;
 				finalUseRC = s.urc;
+				finalManPrice = meanManPrice;
 			}
 			Monitor.runGC();
 		}
@@ -192,7 +201,8 @@ public class BSHTask {
 				"," + maxfval + 
 				"," + maxVar + 
 				"," + finalUseDCSb +
-				"," + finalUseRCSb);
+				"," + finalUseRCSb +
+				"," + finalManPrice);
 	}
 
 	private double[] LargeSampleComputation(double[] udc,
