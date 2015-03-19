@@ -81,8 +81,8 @@ public class BSHTask {
 		//				maxReturn*Environment.PPDensitySum,medianReturn*Environment.PPDensitySum,
 		//				minRate, maxRate, medianRate,M,N);
 		SAA saa = new SAA(2383906*Environment.PPDensitySum,2648785*Environment.PPDensitySum,
-				2913663*Environment.PPDensitySum,28710*Environment.PPDensitySum,
-				114840*Environment.PPDensitySum,200970*Environment.PPDensitySum,0.525,0.7,0.875,M,N);		fvals = new ArrayList<Double>();
+				2913663*Environment.PPDensitySum,0*Environment.PPDensitySum,
+				0*Environment.PPDensitySum,0*Environment.PPDensitySum,0.525,0.7,0.875,M,N);		fvals = new ArrayList<Double>();
 		long start = 0, end = 0;
 		for(int i = 0; i<M; i++){
 			System.out.println("start the sample set " + i);
@@ -140,8 +140,8 @@ public class BSHTask {
 			//		maxReturn*Environment.PPDensitySum,medianReturn*Environment.PPDensitySum,
 			//		minRate, maxRate, medianRate,1,Nprim);
 			saa = new SAA(2383906*Environment.PPDensitySum,2648785*Environment.PPDensitySum,
-					2913663*Environment.PPDensitySum,28710*Environment.PPDensitySum,
-					114840*Environment.PPDensitySum,200970*Environment.PPDensitySum,0.525,0.7,0.875,1,Nprim);			
+					2913663*Environment.PPDensitySum,0*Environment.PPDensitySum,
+					0*Environment.PPDensitySum,0*Environment.PPDensitySum,0.525,0.7,0.875,1,Nprim);			
 			
 			double[] meanAndVar = LargeSampleComputation(s.udc,s.urc, saa);
 			
