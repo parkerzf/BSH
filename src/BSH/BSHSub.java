@@ -132,7 +132,8 @@ public class BSHSub {
 		RC_plant = new IloNumVar[nReturnCenter]; 
 
 		double I = (Environment.reservationPriceUB - Environment.reservationPriceLB)/marketSize;   //I=(resPriceUB - resPriceLB) / marketSize;
-		double manA = Environment.reservationPriceUB - Environment.manCost - Environment.holdingCost;
+//		double manA = Environment.reservationPriceUB - Environment.manCost - Environment.holdingCost;
+		double manA = Environment.manPrice - Environment.manCost - Environment.holdingCost;
 		double remanA = Environment.remanDepreciation * Environment.reservationPriceUB - 
 				Environment.remanCost - Environment.holdingCost + Environment.disposalCost;
 
@@ -143,8 +144,9 @@ public class BSHSub {
 		IloLQNumExpr objExpr = sub.lqNumExpr();
 		manQuantity = sub.numVar(0, capacity_DC[0], "manQuantity");    
 		remanQuantity = sub.numVar(0, capacity_DC[1], "remanQuantity");  
-		objExpr.addTerm(-I, manQuantity, manQuantity);
-		objExpr.addTerm(-2 * Environment.remanDepreciation * I, manQuantity, remanQuantity);
+//		objExpr.addTerm(-I, manQuantity, manQuantity);  //original
+//		objExpr.addTerm(-2 * Environment.remanDepreciation * I, manQuantity, remanQuantity);   //original
+		objExpr.addTerm(-1 * Environment.remanDepreciation * I, manQuantity, remanQuantity);
 		objExpr.addTerm(-Environment.remanDepreciation * I, remanQuantity, remanQuantity);
 		objExpr.addTerm(manA, manQuantity);
 		objExpr.addTerm(remanA, remanQuantity);

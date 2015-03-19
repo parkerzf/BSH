@@ -287,8 +287,10 @@ public class BSH {
 							expr = master.sum(expr, currentDualSolution.chi[j]*currentSub.cFlowBalance_return[j].getUB());//master.prod(chi[j], rhs.get(cFlowBalance_return[j])));
 						}
 						double I = (Environment.reservationPriceUB - Environment.reservationPriceLB)/samples[index].marketSize; 
-						expr = master.sum(expr, I * currentDualSolution.q_new * currentDualSolution.q_new);
-						expr = master.sum(expr, 2 * Environment.remanDepreciation * I * currentDualSolution.q_new 
+//						expr = master.sum(expr, I * currentDualSolution.q_new * currentDualSolution.q_new);
+//						expr = master.sum(expr, 2 * Environment.remanDepreciation * I * currentDualSolution.q_new 
+//								* currentDualSolution.q_reman);
+						expr = master.sum(expr, 1 * Environment.remanDepreciation * I * currentDualSolution.q_new 
 								* currentDualSolution.q_reman);
 						expr = master.sum(expr, Environment.remanDepreciation * I * currentDualSolution.q_reman 
 								* currentDualSolution.q_reman);

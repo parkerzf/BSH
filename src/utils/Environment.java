@@ -7,6 +7,7 @@ public class Environment {
 	public final static double reservationPriceUB = 600; 
 	public final static double reservationPriceLB = 370;
 	public final static double remanDepreciation = 0.7;
+	public final static double manPrice = ;
 	public final static double manCost = 370;
 	public final static double remanCost = 225; 
 	public final static double holdingCost = 10;
