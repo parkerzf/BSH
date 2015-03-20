@@ -132,8 +132,7 @@ public class BSHSub {
 		RC_plant = new IloNumVar[nReturnCenter]; 
 
 		double I = (Environment.reservationPriceUB - Environment.reservationPriceLB)/marketSize;   //I=(resPriceUB - resPriceLB) / marketSize;
-//		double manA = Environment.reservationPriceUB - Environment.manCost - Environment.holdingCost;
-		double manA = Environment.manPrice - Environment.manCost - Environment.holdingCost;
+		double manA = Environment.reservationPriceUB - Environment.manCost - Environment.holdingCost;
 		double remanA = Environment.remanDepreciation * Environment.reservationPriceUB - 
 				Environment.remanCost - Environment.holdingCost + Environment.disposalCost;
 
@@ -144,9 +143,8 @@ public class BSHSub {
 		IloLQNumExpr objExpr = sub.lqNumExpr();
 		manQuantity = sub.numVar(0, capacity_DC[0], "manQuantity");    
 		remanQuantity = sub.numVar(0, capacity_DC[1], "remanQuantity");  
-//		objExpr.addTerm(-I, manQuantity, manQuantity);  //original
-//		objExpr.addTerm(-2 * Environment.remanDepreciation * I, manQuantity, remanQuantity);   //original
-		objExpr.addTerm(-1 * Environment.remanDepreciation * I, manQuantity, remanQuantity);
+		objExpr.addTerm(-I, manQuantity, manQuantity);  //original
+		objExpr.addTerm(-2 * Environment.remanDepreciation * I, manQuantity, remanQuantity);   //original
 		objExpr.addTerm(-Environment.remanDepreciation * I, remanQuantity, remanQuantity);
 		objExpr.addTerm(manA, manQuantity);
 		objExpr.addTerm(remanA, remanQuantity);
@@ -243,6 +241,13 @@ public class BSHSub {
 		objExpr.clear();
 		objExpr.addTerm(1.0, remanQuantity);
 		cCapacity[3] = sub.addLe(objExpr, recoveryRate*ret, "capacity_remanufacturable");
+		
+		// constant price of new product: manPrice = b - I * manQuantity - \delta * I * remanQuantity
+		cManPrice = new IloRange[1];
+		objExpr.clear();
+		objExpr.addTerm(1.0, manQuantity);
+		objExpr.addTerm(Environment.remanDepreciation, remanQuantity);
+		cManPrice[0] = sub.addEq(objExpr, (Environment.reservationPriceUB - Environment.manPrice)/I, "constant_manPrice");
 
 		//supply constraints
 		cSupply_DC_new = new IloRange[nDistributionCenter][nMarket];
