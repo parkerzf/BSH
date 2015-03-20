@@ -8,9 +8,10 @@ public class DualSolution {
 	public double[][] epsilon_DC_reman;
 	public double[][] epsilon_RC;
 	public double[] chi;
+	public double[] beta;
 	
 	public DualSolution(double q_new, double q_reman, double[] gamma, 
-				double[][] epsilon_DC_new, double[][] epsilon_DC_reman, double[][] epsilon_RC, double[] chi){
+				double[][] epsilon_DC_new, double[][] epsilon_DC_reman, double[][] epsilon_RC, double[] chi, double[] beta){
 		this.q_new = q_new;
 		this.q_reman = q_reman;
 		this.gamma = gamma;	
@@ -18,6 +19,7 @@ public class DualSolution {
 		this.epsilon_DC_reman = epsilon_DC_reman;
 		this.epsilon_RC = epsilon_RC;
 		this.chi = chi;
+		this.beta = beta;
 	}
 	
 	//TODO

@@ -246,7 +246,7 @@ public class BSH {
 				}
 				double[] chi = currentSub.sub.getDuals(currentSub.cFlowBalance_return);
 				currentDualSolution  = new DualSolution(q_new,q_reman,gamma,epsilon_DC_new, epsilon_DC_reman, 
-						epsilon_RC, chi);
+						epsilon_RC, chi, beta);
 				allDualSolution[index] = currentDualSolution;
 			}
 			expectSubObjValue /=samples.length;//obj.expect_fval_d
@@ -293,7 +293,7 @@ public class BSH {
 								* currentDualSolution.q_reman);
 						expr = master.sum(expr, Environment.remanDepreciation * I * currentDualSolution.q_reman 
 								* currentDualSolution.q_reman);
-						expr = master.sum(expr, (Environment.reservationPriceUB - Environment.manPrice) * currentDualSolution.beta/I);
+						expr = master.sum(expr, (Environment.reservationPriceUB - Environment.manPrice) * currentDualSolution.beta[0]/I);
 					}
 					expr = master.prod(1f/samples.length, expr);
 					// add the optimality cut						

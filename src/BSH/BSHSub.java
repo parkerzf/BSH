@@ -57,6 +57,7 @@ public class BSHSub {
 
 
 	public IloRange[] cCapacity;   // capacity constraints
+	public IloRange[] cManPrice;     // manufacture price constraints
 	public IloRange[] cFlowBalance_return;   // flow balance constraints
 	
 	public IloRange[][] cSupply_DC_new;   // DC supply constraints for new product
