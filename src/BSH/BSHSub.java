@@ -143,10 +143,10 @@ public class BSHSub {
 		IloLQNumExpr objExpr = sub.lqNumExpr();
 		manQuantity = sub.numVar(0, capacity_DC[0], "manQuantity");    
 		remanQuantity = sub.numVar(0, capacity_DC[1], "remanQuantity");  
-//		objExpr.addTerm(-I, manQuantity, manQuantity);  //original
-//		objExpr.addTerm(-2 * Environment.remanDepreciation * I, manQuantity, remanQuantity);   //original
-		objExpr.addTerm(-1 * Environment.remanDepreciation * I, manQuantity, remanQuantity);
-		objExpr.addTerm(-Environment.remanDepreciation * I, remanQuantity, remanQuantity);
+		objExpr.addTerm(-I, manQuantity, manQuantity);  //original
+		objExpr.addTerm(-2 * Environment.remanDepreciation * I, manQuantity, remanQuantity);   //original
+//		objExpr.addTerm(-1 * Environment.remanDepreciation * I, manQuantity, remanQuantity);
+//		objExpr.addTerm(-Environment.remanDepreciation * I, remanQuantity, remanQuantity);
 		objExpr.addTerm(manA, manQuantity);
 		objExpr.addTerm(remanA, remanQuantity);
 
