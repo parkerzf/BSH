@@ -87,10 +87,10 @@ public class BSHTask {
 //		SAA saa = new SAA(2383906*Environment.PPDensitySum,2648785*Environment.PPDensitySum,
 //				2913663*Environment.PPDensitySum,215325*Environment.PPDensitySum,
 //				861300*Environment.PPDensitySum,1507275*Environment.PPDensitySum,0.525,0.7,0.875,M,N);		fvals = new ArrayList<Double>();
-		// 75% of BSH total return, 2 STD, 40 fixed scenario (Referee #3 last comment)
-		SAA saa = new SAA(2648785*Environment.PPDensitySum,2648785*Environment.PPDensitySum,
-				2648785*Environment.PPDensitySum,486113.8897*Environment.PPDensitySum,
-				486113.8897*Environment.PPDensitySum,486113.8897*Environment.PPDensitySum,0.7,0.7,0.7,M,N);		fvals = new ArrayList<Double>();
+		// 10% of BSH total return, 40 fixed scenario (Referee #3 last comment)
+		SAA saa = new SAA(2451679*Environment.PPDensitySum,2451679*Environment.PPDensitySum,
+				2451679*Environment.PPDensitySum,714289.2506*Environment.PPDensitySum,
+				714289.2506*Environment.PPDensitySum,714289.2506*Environment.PPDensitySum,0.670,0.670,0.670,M,N);		fvals = new ArrayList<Double>();
 		long start = 0, end = 0;
 		for(int i = 0; i<M; i++){
 			System.out.println("start the sample set " + i);

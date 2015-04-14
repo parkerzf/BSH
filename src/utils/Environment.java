@@ -79,9 +79,9 @@ public class Environment {
 			System.err.println("the facility size should be smaller than or equal to pool size:" + POOLSIZE );
 			System.exit(0);
 		}
-//		selectedFacilities = new Integer[facilitySize];
+		selectedFacilities = new Integer[facilitySize];
 //		selectedFacilities = new Integer[]{6,7,10,11,13,23,30,33,37,39}; //BASE CASE
-		selectedFacilities = new Integer[]{6,23,30,33,37,39}; //shorten case
+//		selectedFacilities = new Integer[]{6,23,30,33,37,39}; //shorten case
 //		selectedFacilities = new Integer[]{6,23,33,37,39}; //shrunk problem for optimal netowrk in alpha_{eff} analysis
 //		selectedFacilities = new Integer[]{2,4,5,7,8,9,11,12,13,14};
 //		selectedFacilities = new Integer[]{3,4,7};
@@ -150,17 +150,31 @@ public class Environment {
 		String SAAFileName = "dat/strategic analysis.xls";
 		ExcelHandler handlerSAA = new ExcelHandler(SAAFileName);
 		
-		for(int i = 0; i<17; i++){
-			double[] para = handlerSAA.xlsread("Sheet1", i+1, 2, 10);
+//		original version
+//		for(int i = 0; i<17; i++){
+//			double[] para = handlerSAA.xlsread("Sheet1", i+1, 2, 10);
+//			minMarkets[i] = para[0];
+//			medianMarkets[i] = para[1];
+//			maxMarkets[i] = para[2];
+//			minReturns[i] = para[3];
+//			medianReturns[i] = para[4];
+//			maxReturns[i] = para[5];
+//			minRates[i] = para[6];
+//			medianRates[i] = para[7];
+//			maxRates[i] = para[8];
+		
+//		maximum regret version in response to review #3 last comment:
+		for(int i = 0; i<40; i++){
+			double[] para = handlerSAA.xlsread("regret", i+1, 2, 5);
 			minMarkets[i] = para[0];
-			medianMarkets[i] = para[1];
-			maxMarkets[i] = para[2];
-			minReturns[i] = para[3];
-			medianReturns[i] = para[4];
-			maxReturns[i] = para[5];
-			minRates[i] = para[6];
-			medianRates[i] = para[7];
-			maxRates[i] = para[8];
+			medianMarkets[i] = para[0];
+			maxMarkets[i] = para[0];
+			minReturns[i] = para[2];
+			medianReturns[i] = para[2];
+			maxReturns[i] = para[2];
+			minRates[i] = para[3];
+			medianRates[i] = para[3];
+			maxRates[i] = para[3];
 		}
 		
 	}

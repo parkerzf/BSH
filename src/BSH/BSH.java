@@ -439,7 +439,7 @@ public class BSH {
 	    
 		objExprMaster.clear();
 		objExprMaster.addTerm(1, use_DC[4]);
-	    master.addGe(objExprMaster, 1, "fixed_DC4");
+	    master.addLe(objExprMaster, 0, "fixed_DC4");
 	    
 	    objExprMaster.clear();
 		objExprMaster.addTerm(1, use_DC[5]);
@@ -448,11 +448,11 @@ public class BSH {
 	  //Fixed reverse supply chain to the sequential forward optimal
 	  		objExprMaster.clear();
 	  		objExprMaster.addTerm(1, use_RC[0]);
-	  	    master.addGe(objExprMaster, 1, "fixed_RC0");
+	  	    master.addLe(objExprMaster, 0, "fixed_RC0");
 	  	    
 	  		objExprMaster.clear();
 	  		objExprMaster.addTerm(1, use_RC[1]);
-	  	    master.addGe(objExprMaster, 1, "fixed_RC1");
+	  	    master.addLe(objExprMaster, 0, "fixed_RC1");
 	  	    
 	  		objExprMaster.clear();
 	  		objExprMaster.addTerm(1, use_RC[2]);
