@@ -420,7 +420,7 @@ public class BSH {
 		}
 		master.addGe(objExprMaster, 1, "c_nRC");
 		
-		//Fixed forward supply chain to the sequential forward optimal
+//		Fixed forward supply chain to the sequential forward optimal
 		objExprMaster.clear();
 		objExprMaster.addTerm(1, use_DC[0]);
 	    master.addGe(objExprMaster, 1, "fixed_DC0");
@@ -468,7 +468,7 @@ public class BSH {
 	  	    
 	  	    objExprMaster.clear();
 	  		objExprMaster.addTerm(1, use_RC[5]);
-	  	    master.addLe(objExprMaster, 0, "fixed_RC5");
+	  	    master.addGe(objExprMaster, 1, "fixed_RC5");
 
 		//set upper bound for est_operationalProfit
 		objExprMaster.clear();
