@@ -53,9 +53,9 @@ public class SingleModel {
 
 		double reservationPriceUB = 600; 
 		double reservationPriceLB = 370;
-		double remanDepreciation = 0.92;
+		double remanDepreciation = 0.7;
 		double manCost = 370;
-		double remanCost = 375; 
+		double remanCost = 225;
 		double holdingCost = 10;
 		//double sortingCost = 20;
 		double disposalCost = 50;
@@ -267,55 +267,55 @@ public class SingleModel {
 		//added constraints to fix location for alpha_{eff} analysis
 		//DC: 6, 23, 33
 		//RC: 33, 39
-		objExpr.clear();
-		use_DC[0] = cplex.boolVar("Use_DC_" + 0);
-		objExpr.addTerm(1, use_DC[0]);
-		cplex.addEq(objExpr, 1, "useDC fixed value");
-		
-		objExpr.clear();
-		use_DC[1] = cplex.boolVar("Use_DC_" + 1);
-		objExpr.addTerm(1, use_DC[1]);
-		cplex.addEq(objExpr, 1, "useDC fixed value");
-		
-		objExpr.clear();
-		use_DC[2] = cplex.boolVar("Use_DC_" + 2);
-		objExpr.addTerm(1, use_DC[2]);
-		cplex.addEq(objExpr, 1, "useDC fixed value");
-		
-		objExpr.clear();
-		use_DC[3] = cplex.boolVar("Use_DC_" + 3);
-		objExpr.addTerm(1, use_DC[3]);
-		cplex.addEq(objExpr, 0, "useDC fixed value");
-		
-		objExpr.clear();
-		use_DC[4] = cplex.boolVar("Use_DC_" + 4);
-		objExpr.addTerm(1, use_DC[4]);
-		cplex.addEq(objExpr, 0, "useDC fixed value");
-		
-		objExpr.clear();
-		use_RC[2] = cplex.boolVar("Use_RC_" + 2);
-		objExpr.addTerm(1, use_RC[2]);
-		cplex.addEq(objExpr, 1, "useRC fixed value");
-		
-		objExpr.clear();
-		use_RC[4] = cplex.boolVar("Use_RC_" + 4);
-		objExpr.addTerm(1, use_RC[4]);
-		cplex.addEq(objExpr, 1, "useRC fixed value");
-		
-		objExpr.clear();
-		use_RC[0] = cplex.boolVar("Use_RC_" + 0);
-		objExpr.addTerm(1, use_RC[0]);
-		cplex.addEq(objExpr, 0, "useRC fixed value");
-		
-		objExpr.clear();
-		use_RC[1] = cplex.boolVar("Use_RC_" + 1);
-		objExpr.addTerm(1, use_RC[1]);
-		cplex.addEq(objExpr, 0, "useRC fixed value");
-		
-		objExpr.clear();
-		use_RC[3] = cplex.boolVar("Use_RC_" + 3);
-		objExpr.addTerm(1, use_RC[3]);
-		cplex.addEq(objExpr, 0, "useRC fixed value");
+//		objExpr.clear();
+//		use_DC[0] = cplex.boolVar("Use_DC_" + 0);
+//		objExpr.addTerm(1, use_DC[0]);
+//		cplex.addEq(objExpr, 1, "useDC fixed value");
+//		
+//		objExpr.clear();
+//		use_DC[1] = cplex.boolVar("Use_DC_" + 1);
+//		objExpr.addTerm(1, use_DC[1]);
+//		cplex.addEq(objExpr, 1, "useDC fixed value");
+//		
+//		objExpr.clear();
+//		use_DC[2] = cplex.boolVar("Use_DC_" + 2);
+//		objExpr.addTerm(1, use_DC[2]);
+//		cplex.addEq(objExpr, 1, "useDC fixed value");
+//		
+//		objExpr.clear();
+//		use_DC[3] = cplex.boolVar("Use_DC_" + 3);
+//		objExpr.addTerm(1, use_DC[3]);
+//		cplex.addEq(objExpr, 0, "useDC fixed value");
+//		
+//		objExpr.clear();
+//		use_DC[4] = cplex.boolVar("Use_DC_" + 4);
+//		objExpr.addTerm(1, use_DC[4]);
+//		cplex.addEq(objExpr, 0, "useDC fixed value");
+//		
+//		objExpr.clear();
+//		use_RC[2] = cplex.boolVar("Use_RC_" + 2);
+//		objExpr.addTerm(1, use_RC[2]);
+//		cplex.addEq(objExpr, 1, "useRC fixed value");
+//		
+//		objExpr.clear();
+//		use_RC[4] = cplex.boolVar("Use_RC_" + 4);
+//		objExpr.addTerm(1, use_RC[4]);
+//		cplex.addEq(objExpr, 1, "useRC fixed value");
+//		
+//		objExpr.clear();
+//		use_RC[0] = cplex.boolVar("Use_RC_" + 0);
+//		objExpr.addTerm(1, use_RC[0]);
+//		cplex.addEq(objExpr, 0, "useRC fixed value");
+//		
+//		objExpr.clear();
+//		use_RC[1] = cplex.boolVar("Use_RC_" + 1);
+//		objExpr.addTerm(1, use_RC[1]);
+//		cplex.addEq(objExpr, 0, "useRC fixed value");
+//		
+//		objExpr.clear();
+//		use_RC[3] = cplex.boolVar("Use_RC_" + 3);
+//		objExpr.addTerm(1, use_RC[3]);
+//		cplex.addEq(objExpr, 0, "useRC fixed value");
 		
 		//output the model 
 		System.out.println(cplex);
