@@ -169,12 +169,12 @@ public class Environment {
 			minMarkets[i] = para[0];
 			medianMarkets[i] = para[0];
 			maxMarkets[i] = para[0];
-			minReturns[i] = para[2];
-			medianReturns[i] = para[2];
-			maxReturns[i] = para[2];
-			minRates[i] = para[3];
-			medianRates[i] = para[3];
-			maxRates[i] = para[3];
+			minReturns[i] = para[1];
+			medianReturns[i] = para[1];
+			maxReturns[i] = para[1];
+			minRates[i] = para[2];
+			medianRates[i] = para[2];
+			maxRates[i] = para[2];
 		}
 		
 	}
