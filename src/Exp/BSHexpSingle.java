@@ -88,7 +88,7 @@ public class BSHexpSingle {
 		/*
 		 * Now build and solve a model using Benders decomposition.
 		 */
-		String outFileName  = "out/"+citysize+"_"+facilitySize+"_.txt";
+		String outFileName  = "out/"+citysize+"_"+facilitySize+".txt";
 		try {
 			PrintStream out = new PrintStream(new FileOutputStream(outFileName));
 			for(int i = 0; i < marketsList.size(); i++){
@@ -154,8 +154,6 @@ public class BSHexpSingle {
 						"," + returnList.get(i) + 
 						"," + rateList.get(i) + 
 						"," + sum + 
-						"," + ret + 
-						"," + recoveryRate +
 						"," + s.remanQuantity/(ret * recoveryRate));
 				end = System.currentTimeMillis();
 				System.out.println("single model time = " + (end - start) + "ms\n");

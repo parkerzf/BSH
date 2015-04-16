@@ -92,11 +92,11 @@ public class Environment {
 //		selectedFacilities[3] = 4;
 //		selectedFacilities[4] = 13;
 		if(facilitySize< POOLSIZE) {
-//			for(int i = 0 ; i < facilitySize; i++){
-//				int index = r.nextInt(POOLSIZE - i -1) + 1;
-//				selectedFacilities[i] = facilityCandidates.get(index);
-//				facilityCandidates.remove(index);
-//			}
+			for(int i = 0 ; i < facilitySize; i++){
+				int index = r.nextInt(POOLSIZE - i -1) + 1;
+				selectedFacilities[i] = facilityCandidates.get(index);
+				facilityCandidates.remove(index);
+			}
 			System.out.print("slected facilities: ");
 		    for (int i = 0; i < facilitySize; i++) {
 		    	System.out.print(selectedFacilities[i]+" ");
@@ -164,18 +164,18 @@ public class Environment {
 //			maxRates[i] = para[8];
 		
 //		maximum regret version in response to review #3 last comment:
-		for(int i = 0; i<40; i++){
-			double[] para = handlerSAA.xlsread("regret", i+1, 2, 5);
-			minMarkets[i] = para[0];
-			medianMarkets[i] = para[0];
-			maxMarkets[i] = para[0];
-			minReturns[i] = para[1];
-			medianReturns[i] = para[1];
-			maxReturns[i] = para[1];
-			minRates[i] = para[2];
-			medianRates[i] = para[2];
-			maxRates[i] = para[2];
-		}
+//		for(int i = 0; i<40; i++){
+//			double[] para = handlerSAA.xlsread("regret", i+1, 2, 5);
+//			minMarkets[i] = para[0];
+//			medianMarkets[i] = para[0];
+//			maxMarkets[i] = para[0];
+//			minReturns[i] = para[1];
+//			medianReturns[i] = para[1];
+//			maxReturns[i] = para[1];
+//			minRates[i] = para[2];
+//			medianRates[i] = para[2];
+//			maxRates[i] = para[2];
+//		}
 		
 	}
 }
