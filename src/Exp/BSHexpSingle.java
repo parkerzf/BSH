@@ -150,11 +150,11 @@ public class BSHexpSingle {
 				System.out.println("recoveryRate:" + recoveryRate);
 				System.out.println("effective recovery rate:" + s.remanQuantity/(ret * recoveryRate)); //alpha effective			
 
-				out.println(marketsList.get(i) + 
+				out.print(marketsList.get(i) + 
 						"," + returnList.get(i) + 
 						"," + rateList.get(i) + 
-						"," + sum + 
-						"," + s.remanQuantity/(ret * recoveryRate));
+						",");
+				s.print(out);
 				end = System.currentTimeMillis();
 				System.out.println("single model time = " + (end - start) + "ms\n");
 				Monitor.runGC();

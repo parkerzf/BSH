@@ -63,62 +63,75 @@ public class PrimalSolution {
 	}
 
 	public void print(PrintStream out) {		
-		out.println("***\nThe incumbent has total profit "
-				+ String.format("%10.5f", profit));
-		
-		out.println("use DC:");
+		out.print(String.format("%10.5f", profit));
+		out.print(",{");
 		for (int i = 0; i < udc.length; i++) {
-			if(udc[i] > 0.5)
-				out.print("\t" + String.format("use_DC_%d = %8.5f", i, udc[i]));
+			if(udc[i] > 0.5) out.print(i + ";");
 		}
-		out.println();
-
-		out.println("use RC:");
-		for (int i = 0; i < urc.length; i++) {
-			if(urc[i] > 0.5)
-				out.print("\t" + String.format("use_RC_%d = %8.5f", i, urc[i]));
+		
+		out.print("},{");
+		for (int i = 0; i < udc.length; i++) {
+			if(urc[i] > 0.5) out.print(i + ";");
 		}
-		out.println();
-
-		out.println("plant_DC:");
-		for (int i = 0; i < plant_DC.length; i++) {
-			for( int j = 0; j < plant_DC[0].length; j++) {
-				if(plant_DC[i][j] > 0)
-					out.print("\t" + String.format("plant_DC_%d_%d = %8.5f", i, j, plant_DC[i][j]));
-			}
-		}
-		out.println();
-		out.println("DC_customers:");
-		for (int i = 0; i < DC_customers.length; i++) {
-			for( int j = 0; j < DC_customers[0].length; j++) {
-				for( int k = 0; k < DC_customers[0][0].length; k++) {
-					if(DC_customers[i][j][k] > 0)
-						out.print("\t" + String.format("DC_customers_%d_%d_%d = %8.5f", i, j, k, DC_customers[i][j][k]));
-				}
-			}
-		}
-		out.println();
-		out.println("customers_RC:");
-		for (int i = 0; i < customers_RC.length; i++) {
-			for( int j = 0; j < customers_RC[0].length; j++) {
-				if(customers_RC[i][j] > 0)
-					out.print("\t" + String.format("customers_RC_%d_%d = %8.5f", i, j, customers_RC[i][j]));
-			}
-		}
-		out.println();
-		out.println("RC_plant:");
-		for (int i = 0 ; i < RC_plant.length; i++){
-			if(RC_plant[i] > 0)
-				out.print("\t" + String.format("RC_plant_%d = %8.5f", i, RC_plant[i]));
-		}
-		out.println();
-		out.println("manQuantity:");
-		out.print("\t" + String.format("%8.5f", manQuantity));
-		out.println();
-		out.println("remanQuantity:");
-		out.print("\t" + String.format("%8.5f", remanQuantity));
-		out.println();
-		out.println("***");
+		
+		out.println("}");
+		
+//		out.println("***\nThe incumbent has total profit "
+//				+ String.format("%10.5f", profit));
+//		
+//		out.println("use DC:");
+//		for (int i = 0; i < udc.length; i++) {
+//			if(udc[i] > 0.5)
+//				out.print("\t" + String.format("use_DC_%d = %8.5f", i, udc[i]));
+//		}
+//		out.println();
+//
+//		out.println("use RC:");
+//		for (int i = 0; i < urc.length; i++) {
+//			if(urc[i] > 0.5)
+//				out.print("\t" + String.format("use_RC_%d = %8.5f", i, urc[i]));
+//		}
+//		out.println();
+//
+//		out.println("plant_DC:");
+//		for (int i = 0; i < plant_DC.length; i++) {
+//			for( int j = 0; j < plant_DC[0].length; j++) {
+//				if(plant_DC[i][j] > 0)
+//					out.print("\t" + String.format("plant_DC_%d_%d = %8.5f", i, j, plant_DC[i][j]));
+//			}
+//		}
+//		out.println();
+//		out.println("DC_customers:");
+//		for (int i = 0; i < DC_customers.length; i++) {
+//			for( int j = 0; j < DC_customers[0].length; j++) {
+//				for( int k = 0; k < DC_customers[0][0].length; k++) {
+//					if(DC_customers[i][j][k] > 0)
+//						out.print("\t" + String.format("DC_customers_%d_%d_%d = %8.5f", i, j, k, DC_customers[i][j][k]));
+//				}
+//			}
+//		}
+//		out.println();
+//		out.println("customers_RC:");
+//		for (int i = 0; i < customers_RC.length; i++) {
+//			for( int j = 0; j < customers_RC[0].length; j++) {
+//				if(customers_RC[i][j] > 0)
+//					out.print("\t" + String.format("customers_RC_%d_%d = %8.5f", i, j, customers_RC[i][j]));
+//			}
+//		}
+//		out.println();
+//		out.println("RC_plant:");
+//		for (int i = 0 ; i < RC_plant.length; i++){
+//			if(RC_plant[i] > 0)
+//				out.print("\t" + String.format("RC_plant_%d = %8.5f", i, RC_plant[i]));
+//		}
+//		out.println();
+//		out.println("manQuantity:");
+//		out.print("\t" + String.format("%8.5f", manQuantity));
+//		out.println();
+//		out.println("remanQuantity:");
+//		out.print("\t" + String.format("%8.5f", remanQuantity));
+//		out.println();
+//		out.println("***");
 	}
 	
 	@Override
