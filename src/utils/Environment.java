@@ -79,8 +79,8 @@ public class Environment {
 			System.err.println("the facility size should be smaller than or equal to pool size:" + POOLSIZE );
 			System.exit(0);
 		}
-		selectedFacilities = new Integer[facilitySize];
-//		selectedFacilities = new Integer[]{6,7,10,11,13,23,30,33,37,39}; //BASE CASE
+//		selectedFacilities = new Integer[facilitySize];
+		selectedFacilities = new Integer[]{6,7,10,11,13,23,30,33,37,39}; //BASE CASE
 //		selectedFacilities = new Integer[]{6,23,30,33,37,39}; //shorten case
 //		selectedFacilities = new Integer[]{6,23,33,37,39}; //shrunk problem for optimal netowrk in alpha_{eff} analysis
 //		selectedFacilities = new Integer[]{2,4,5,7,8,9,11,12,13,14};
@@ -92,11 +92,11 @@ public class Environment {
 //		selectedFacilities[3] = 4;
 //		selectedFacilities[4] = 13;
 		if(facilitySize< POOLSIZE) {
-			for(int i = 0 ; i < facilitySize; i++){
-				int index = r.nextInt(POOLSIZE - i -1) + 1;
-				selectedFacilities[i] = facilityCandidates.get(index);
-				facilityCandidates.remove(index);
-			}
+//			for(int i = 0 ; i < facilitySize; i++){
+//				int index = r.nextInt(POOLSIZE - i -1) + 1;
+//				selectedFacilities[i] = facilityCandidates.get(index);
+//				facilityCandidates.remove(index);
+//			}
 			System.out.print("slected facilities: ");
 		    for (int i = 0; i < facilitySize; i++) {
 		    	System.out.print(selectedFacilities[i]+" ");
@@ -107,9 +107,11 @@ public class Environment {
 		    		flowCost_DC_customers[i][j] = handler.xlsread("transportation cost", selectedFacilities[i] - 1, j + 1);
 		    	}
 		    	for (int j = 0; j < nCustomers; j++) {
-		    		flowCost_customers_RC[j][i] = 2.5 * handler.xlsread("transportation cost", selectedFacilities[i] - 1, j + 1);
+		    		flowCost_customers_RC[j][i] = handler.xlsread("transportation cost", selectedFacilities[i] - 1, j + 1);//used to generate table 7.4
+//		    		flowCost_customers_RC[j][i] = 2.5 * handler.xlsread("transportation cost", selectedFacilities[i] - 1, j + 1);
 		    	}
-		    	flowCost_RC_plant[i] = 2.5 * handler.xlsread("distance", 11, selectedFacilities[i]);
+		    	flowCost_RC_plant[i] = handler.xlsread("distance", 11, selectedFacilities[i]);//used to generate table 7.4
+//		    	flowCost_RC_plant[i] = 2.5 * handler.xlsread("distance", 11, selectedFacilities[i]);
 		    }
 		    System.out.println();
 		}

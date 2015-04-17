@@ -265,8 +265,8 @@ public class SingleModel {
 		cplex.addEq(objExpr, 0, "flowBalance_RC_plant");
 		
 		//added constraints to fix location for alpha_{eff} analysis
-		//DC: 6, 23, 33
-		//RC: 33, 39
+		//DC: 0, 5, 7
+		//RC: 7, 9
 //		objExpr.clear();
 //		use_DC[0] = cplex.boolVar("Use_DC_" + 0);
 //		objExpr.addTerm(1, use_DC[0]);
@@ -275,12 +275,12 @@ public class SingleModel {
 //		objExpr.clear();
 //		use_DC[1] = cplex.boolVar("Use_DC_" + 1);
 //		objExpr.addTerm(1, use_DC[1]);
-//		cplex.addEq(objExpr, 1, "useDC fixed value");
+//		cplex.addEq(objExpr, 0, "useDC fixed value");
 //		
 //		objExpr.clear();
 //		use_DC[2] = cplex.boolVar("Use_DC_" + 2);
 //		objExpr.addTerm(1, use_DC[2]);
-//		cplex.addEq(objExpr, 1, "useDC fixed value");
+//		cplex.addEq(objExpr, 0, "useDC fixed value");
 //		
 //		objExpr.clear();
 //		use_DC[3] = cplex.boolVar("Use_DC_" + 3);
@@ -293,14 +293,29 @@ public class SingleModel {
 //		cplex.addEq(objExpr, 0, "useDC fixed value");
 //		
 //		objExpr.clear();
-//		use_RC[2] = cplex.boolVar("Use_RC_" + 2);
-//		objExpr.addTerm(1, use_RC[2]);
-//		cplex.addEq(objExpr, 1, "useRC fixed value");
+//		use_DC[5] = cplex.boolVar("Use_DC_" + 5);
+//		objExpr.addTerm(1, use_DC[5]);
+//		cplex.addEq(objExpr, 1, "useDC fixed value");
 //		
 //		objExpr.clear();
-//		use_RC[4] = cplex.boolVar("Use_RC_" + 4);
-//		objExpr.addTerm(1, use_RC[4]);
-//		cplex.addEq(objExpr, 1, "useRC fixed value");
+//		use_DC[6] = cplex.boolVar("Use_DC_" + 6);
+//		objExpr.addTerm(1, use_DC[6]);
+//		cplex.addEq(objExpr, 0, "useDC fixed value");
+//		
+//		objExpr.clear();
+//		use_DC[7] = cplex.boolVar("Use_DC_" + 7);
+//		objExpr.addTerm(1, use_DC[7]);
+//		cplex.addEq(objExpr, 1, "useDC fixed value");
+//		
+//		objExpr.clear();
+//		use_DC[8] = cplex.boolVar("Use_DC_" + 8);
+//		objExpr.addTerm(1, use_DC[8]);
+//		cplex.addEq(objExpr, 0, "useDC fixed value");
+//		
+//		objExpr.clear();
+//		use_DC[9] = cplex.boolVar("Use_DC_" + 9);
+//		objExpr.addTerm(1, use_DC[9]);
+//		cplex.addEq(objExpr, 0, "useDC fixed value");
 //		
 //		objExpr.clear();
 //		use_RC[0] = cplex.boolVar("Use_RC_" + 0);
@@ -313,9 +328,44 @@ public class SingleModel {
 //		cplex.addEq(objExpr, 0, "useRC fixed value");
 //		
 //		objExpr.clear();
+//		use_RC[2] = cplex.boolVar("Use_RC_" + 2);
+//		objExpr.addTerm(1, use_RC[2]);
+//		cplex.addEq(objExpr, 0, "useRC fixed value");
+//		
+//		objExpr.clear();
 //		use_RC[3] = cplex.boolVar("Use_RC_" + 3);
 //		objExpr.addTerm(1, use_RC[3]);
 //		cplex.addEq(objExpr, 0, "useRC fixed value");
+//		
+//		objExpr.clear();
+//		use_RC[4] = cplex.boolVar("Use_RC_" + 4);
+//		objExpr.addTerm(1, use_RC[4]);
+//		cplex.addEq(objExpr, 0, "useRC fixed value");
+//		
+//		objExpr.clear();
+//		use_RC[5] = cplex.boolVar("Use_RC_" + 5);
+//		objExpr.addTerm(1, use_RC[5]);
+//		cplex.addEq(objExpr, 0, "useRC fixed value");
+//		
+//		objExpr.clear();
+//		use_RC[6] = cplex.boolVar("Use_RC_" + 6);
+//		objExpr.addTerm(1, use_RC[6]);
+//		cplex.addEq(objExpr, 0, "useRC fixed value");
+//		
+//		objExpr.clear();
+//		use_RC[7] = cplex.boolVar("Use_RC_" + 7);
+//		objExpr.addTerm(1, use_RC[7]);
+//		cplex.addEq(objExpr, 1, "useRC fixed value");
+//		
+//		objExpr.clear();
+//		use_RC[8] = cplex.boolVar("Use_RC_" + 8);
+//		objExpr.addTerm(1, use_RC[8]);
+//		cplex.addEq(objExpr, 0, "useRC fixed value");
+//		
+//		objExpr.clear();
+//		use_RC[9] = cplex.boolVar("Use_RC_" + 9);
+//		objExpr.addTerm(1, use_RC[9]);
+//		cplex.addEq(objExpr, 1, "useRC fixed value");
 		
 		//output the model 
 		System.out.println(cplex);
